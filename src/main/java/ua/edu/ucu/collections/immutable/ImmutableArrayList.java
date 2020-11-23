@@ -3,6 +3,10 @@ package ua.edu.ucu.collections.immutable;
 public class ImmutableArrayList implements ImmutableList{
     private Object[] array;
 
+    public ImmutableArrayList(){
+        this.array = new Object[0];
+    }
+
     public ImmutableArrayList(Object[] obj){
         this.array = obj;
     }
@@ -14,7 +18,7 @@ public class ImmutableArrayList implements ImmutableList{
         for (int i=0; i < array.length; i ++){
             newArray[i] = array[i];
         }
-        newArray[sizeArray - 1] = e;
+        newArray[sizeArray] = e;
         return new ImmutableArrayList(newArray);
     }
 
@@ -30,7 +34,8 @@ public class ImmutableArrayList implements ImmutableList{
         }
         newArray[index] = e;
         for (int j=index + 1; j < sizeArray; j ++){
-            newArray[j] = array[j];
+            newArray[j] = array[index];
+            index ++;
         }
         return new ImmutableArrayList(newArray);
     }
@@ -62,8 +67,9 @@ public class ImmutableArrayList implements ImmutableList{
         for (int j=0; j < c.length; j ++){
             newArray[index + j] = c[j];
         }
-        for (int r=index + c.length; r < sizeArray; r++){
-            newArray[r] = array[r];
+        for (int r=index + c.length; r < sizeArray + c.length; r++){
+            newArray[r] = array[index];
+            index++;
         }
         return null;
     }
