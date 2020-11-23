@@ -43,10 +43,12 @@ public class ImmutableArrayListTest {
         Object[] array = {1, 2, 3};
         Object[] cArray = {6, 7};
         ImmutableList newArray = new ImmutableArrayList(array);
-        ImmutableList result = newArray.addAll(2, cArray);
+        newArray = newArray.addAll(2, cArray);
+        ImmutableList result = newArray;
 
         Object[] expResult = {1, 2, 6, 7, 3};
         Object[] actualResult = result.toArray();
+        System.out.println(Arrays.toString(actualResult));
         assertArrayEquals(expResult, actualResult);
     }
 

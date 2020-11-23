@@ -33,7 +33,7 @@ public class ImmutableArrayList implements ImmutableList{
             newArray[i] = array[i];
         }
         newArray[index] = e;
-        for (int j=index + 1; j < sizeArray; j ++){
+        for (int j=index + 1; j < sizeArray + 1; j ++){
             newArray[j] = array[index];
             index ++;
         }
@@ -94,7 +94,7 @@ public class ImmutableArrayList implements ImmutableList{
             newArray[i] = array[i];
         }
         for (int j=index + 1; j < sizeArray; j ++){
-            newArray[j] = array[j];
+            newArray[j-1] = array[j];
         }
         return new ImmutableArrayList(newArray);
 
